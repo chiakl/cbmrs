@@ -1,0 +1,151 @@
+{% extends 'movielover_template/base_template.html' %}
+
+{% block page_title %}
+    Preference
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Current Preference</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" method="POST" action="{% url 'movielover_profile_update' %}">
+                        {% csrf_token %}
+
+                                {% comment %} Display Messages {% endcomment %}
+                                {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+                            
+                        <div class="card-body">
+
+                            <div class="form-group">
+                                <label>Preference </label>
+                                <input type="text" class="form-control" name="preference" value="{{ student.preference }}" disabled="disabled">
+                            </div>
+
+                        </div>
+                    </form>
+                        <!-- /.card-body -->
+                </div>
+
+                <div class="card card-primary">
+                    <form role="role" method="POST" action="{% url 'movielover_preference_update' %}">
+                        {% csrf_token %}
+                    <div class="card-header">
+                        <h3 class="card-title">Update Preference</h3>
+                    </div>
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><label for="action">Adventure</label><br></td>
+                                <td><input type="checkbox" id="1" name="pref" value="Adventure"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Animation</label><br></td>
+                                <td><input type="checkbox" id="2" name="pref" value="Animation"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Children</label><br></td>
+                                <td><input type="checkbox" id="3" name="pref" value="Children"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Comedy</label><br></td>
+                                <td><input type="checkbox" id="4" name="pref" value="Comedy"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Crime</label><br></td>
+                                <td><input type="checkbox" id="5" name="pref" value="Crime"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Documentary</label><br></td>
+                                <td><input type="checkbox" id="6" name="pref" value="Documentary"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Drama</label><br></td>
+                                <td><input type="checkbox" id="7" name="pref" value="Drama"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Fantasy</label><br></td>
+                                <td><input type="checkbox" id="8" name="pref" value="Fantasy"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Film-Noir</label><br></td>
+                                <td><input type="checkbox" id="9" name="pref" value="Film-Noir"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Horror</label><br></td>
+                                <td><input type="checkbox" id="10" name="pref" value="Horror"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Musical</label><br></td>
+                                <td><input type="checkbox" id="11" name="pref" value="Musical"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Mystery</label><br></td>
+                                <td><input type="checkbox" id="12" name="pref" value="Mystery"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Romance</label><br></td>
+                                <td><input type="checkbox" id="13" name="pref" value="Romance"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Sci-Fi</label><br></td>
+                                <td><input type="checkbox" id="14" name="pref" value="Sci-Fi"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="action">Thriller</label><br></td>
+                                <td><input type="checkbox" id="15" name="pref" value="Thriller"></td>
+                            </tr>
+                            <td><button type="submit" class="btn btn-primary">Update Profile</button></td><td>
+                        </tbody>
+                        </table>
+                    </div>
+                    </form>
+                </div>
+                </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.container-fluid -->
+    </section>
+
+  {% endblock main_content %}

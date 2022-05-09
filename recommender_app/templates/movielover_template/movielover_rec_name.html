@@ -1,0 +1,64 @@
+{% extends 'movielover_template/base_template.html' %}
+
+{% block page_title %}
+    Recommendation by Name
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Enter movie name for recommendation!</h3><br>
+                        <h3 class="card-title">NOTE: Please enter full movie name and pay attention to case sensitive.</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" method="POST" action="{% url 'movielover_rec_name' %}">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            <div class="form-group">
+                                <form method="POST" action="{% url 'movielover_rec_name' %}">
+                                    <input type="text" name="search" class="form-control float-right" placeholder="Type in movie name...">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">Recommend Movie!</button></td>
+                                </form>
+                            </div>
+                        </div>
+                    </form>
+                        <!-- /.card-body -->
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover ">
+                    <thead>
+                        <tr>
+                        <th>Ranking</th>
+                        <th>Movie Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for d in df %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td><a href="https://www.allmovie.com/search/all/{{ d|join:"" }}" target="_blank">{{ d|join:"" }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    </table>
+                </div>
+                </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+    </section>
+
+  {% endblock main_content %}

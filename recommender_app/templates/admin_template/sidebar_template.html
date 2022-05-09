@@ -1,0 +1,68 @@
+{% load static %}
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="{% url 'admin_profile' %}" class="d-block">Hi, Welcome !</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+
+            <li class="nav-item">
+              {% url 'admin_home' as admin_home %}
+              <a href="{{ admin_home }}" class="nav-link {% if request.path == admin_home %} active {% endif %}">
+                <i class="nav-icon fas fa-home"></i>
+                <p>
+                  Home
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'admin_ml' as admin_ml %}
+              <a href="{{ admin_ml }}" class="nav-link {% if request.path == admin_ml %} active {% endif %} ">
+                <i class="nav-icon fas fa-file-video"></i>
+                <p>
+                  Movie List
+                </p>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              {% url 'manage_ml' as manage_ml %}
+              {% url 'edit_movielover' student_id=id as edit_movielover %}
+              <a href="{{ manage_ml }}" class="nav-link {% if request.path == manage_ml %} active {% endif %} {% if request.path == edit_movielover %} active {% endif %}">
+                <i class="nav-icon fas fa-user-edit"></i>
+                <p>
+                  Manage User
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'add_ml' as add_ml %}
+              <a href="{{ add_ml }}" class="nav-link {% if request.path == add_ml %} active {% endif %}">
+                <i class="nav-icon fas fa-user-alt"></i>
+                <p>
+                  Add User
+                </p>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>

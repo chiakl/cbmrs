@@ -1,0 +1,59 @@
+{% extends 'admin_template/base_template.html' %}
+
+{% block page_title %}
+    Movie List
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        
+
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Movie Details</h3>
+
+                            <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 200px;">
+                                <form method="POST" action="{% url 'admin_ml' %}">
+                                <input type="text" name="search" class="form-control float-right" placeholder="Search">
+                                {% csrf_token %}
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover ">
+                            <thead>
+                                <tr>
+                                <th>ID</th>
+                                <th>Movie Name</th>
+                                <th>Genres</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for movie in movie %}
+                                <tr>
+                                <td>{{ movie.id }}</td>
+                                <td><a href="https://www.allmovie.com/search/all/{{ movie.title }}" target="_blank">{{ movie.title }}</a></td>
+                                <td>{{ movie.genres }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+  {% endblock main_content %}

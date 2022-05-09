@@ -1,0 +1,96 @@
+{% load static %}
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="{% url 'movielover_profile' %}" class="d-block">Hi, Welcome !</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+            
+            <li class="nav-item">
+              {% url 'movielover_home' as movielover_home %}
+              <a href="{{ movielover_home }}" class="nav-link {% if request.path == movielover_home %} active {% endif %}">
+                <i class="nav-icon fa fa-home"></i>
+                <p>
+                  Home
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li>
+
+            
+            <!-- Added by me-->
+            <li class="nav-item">
+              {% url 'movielover_preference' as movielover_preference %}
+              <a href="{{ movielover_preference }}" class="nav-link {% if request.path == movielover_preference %} active {% endif %}">
+                <i class="nav-icon fas fa-heart"></i>
+                <p>
+                  Preference
+                </p>
+              </a>
+            </li>
+
+
+            <!-- Added by me -->
+            <li class="nav-item">
+              {% url 'movielover_movie_list' as movielover_movie_list %}
+              <a href="{{ movielover_movie_list }}" class="nav-link {% if request.path == movielover_movie_list %} active {% endif %}">
+                <i class="nav-icon fas fa-file-video"></i>
+                <p>
+                  Movie List
+                </p>
+              </a>
+            </li>
+
+
+
+            <li class="nav-item">
+              {% url 'movielover_rec_name' as movielover_rec_name %}
+              <a href="{{ movielover_rec_name }}" class="nav-link {% if request.path == movielover_rec_name %} active {% endif %}">
+                <i class="nav-icon fas fa-terminal"></i>
+                <p>
+                  Recommend by Name
+                </p>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              {% url 'movielover_rec_genre' as movielover_rec_genre %}
+              <a href="{{ movielover_rec_genre }}" class="nav-link {% if request.path == movielover_rec_genre %} active {% endif %}">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Recommend by Genre
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'movielover_rec' as movielover_rec %}
+              <a href="{{ movielover_rec }}" class="nav-link {% if request.path == movielover_rec %} active {% endif %}">
+                <i class="nav-icon fab fa-audible"></i>
+                <p>
+                  Hybrid Recommendation
+                </p>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
